@@ -1,0 +1,75 @@
+.search-form {
+    background-color: #eee;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.search-form input[type="text"] {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    outline: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-form button[type="submit"] {
+    background-color: #2c84e2;
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.search-form:hover {
+    transform: scale(1.05);
+    background-color: #ddd;
+}
+
+.search-form input[type="text"]:focus {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+}
+
+.search-form input[type="text"]:focus {
+    transform: scale(1.05);
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 10px;
+}
+
+.photo-card {
+    max-height: 350px;
+    flex-basis: calc((100% - 30px) / 4);
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.photo-card img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
