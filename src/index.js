@@ -28,6 +28,11 @@ searchForm.addEventListener("submit", (e) => {
 
 async function createMarkup(response) {
 
+  if (!response || response.totalHits === undefined) {
+    Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+    return;
+  };
+
   if (response.totalHits === 0) {
     Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
