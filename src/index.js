@@ -20,13 +20,24 @@ searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const query = searchInput.value.trim();
   page = 1;
-  getImages(query, page, perPage).then(createMarkup);
+
+      if (!query) {
+    Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+    return;
+    };
+
+  getImages(query, page, perPage)
+    .then(createMarkup)
+    .catch(() => {
+      Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+    });
+
   gallery.innerHTML = "";
   observer.unobserve(target);
 });
 
 
-async function createMarkup(response) {
+function createMarkup(response) {
 
   totalHits = response.totalHits;
 
@@ -85,7 +96,12 @@ function onLoad(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       page++;
-      getImages(searchInput.value.trim(), page, perPage).then(createMarkup);
+
+      getImages(searchInput.value.trim(), page, perPage)
+        .then(createMarkup)
+        .catch(() => {
+          Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+        });
 
       const { height: cardHeight } = document
         .querySelector(".gallery")
@@ -95,6 +111,7 @@ function onLoad(entries, observer) {
         top: cardHeight * 2,
         behavior: "smooth",
       });
+
       if (page > Math.ceil(totalHits / perPage)) {
         observer.unobserve(target);
       };
