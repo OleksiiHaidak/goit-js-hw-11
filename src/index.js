@@ -71,7 +71,6 @@ async function createMarkup(response) {
 };
 
 
-
 let options = {
   root: null,
   rootMargin: "300px",
