@@ -35,7 +35,6 @@ async function createMarkup(response) {
     return;
   };
 
-
   if (page === 1) {
       Notify.success(`Hooray! We found ${response.totalHits} images.`);
   };

@@ -9,10 +9,12 @@ const url = "https://pixabay.com/api/";
 
 export async function getImages(query, page, perPage) {
   try {
+
     if (!query) {
     Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
     };
+    
     const response = await axios.get(`${url}?key=${pixabayApiKey}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${perPage}&page=${page}`);
     totalHits = response.data.totalHits;
     return response.data;
