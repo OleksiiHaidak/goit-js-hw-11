@@ -112,7 +112,7 @@ function onLoad(entries, observer) {
         behavior: "smooth",
       });
 
-      if (page > Math.ceil(totalHits / perPage)) {
+            if (page >= Math.ceil(totalHits / perPage)) {
         observer.unobserve(target);
       };
     };
