@@ -28,15 +28,13 @@ searchForm.addEventListener("submit", (e) => {
 
 async function createMarkup(response) {
 
-  if (!response || response.totalHits === undefined) {
-    Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-    return;
-  };
+  totalHits = response.totalHits;
 
   if (response.totalHits === 0) {
     Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     return;
   };
+
 
   if (page === 1) {
       Notify.success(`Hooray! We found ${response.totalHits} images.`);
@@ -98,7 +96,6 @@ function onLoad(entries, observer) {
         top: cardHeight * 2,
         behavior: "smooth",
       });
-
       if (page > Math.ceil(totalHits / perPage)) {
         observer.unobserve(target);
       };
