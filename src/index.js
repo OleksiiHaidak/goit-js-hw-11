@@ -97,6 +97,10 @@ function onLoad(entries, observer) {
     if (entry.isIntersecting) {
       page++;
 
+      if (page >= Math.ceil(totalHits / perPage)) {
+        observer.unobserve(target);
+      };
+
       getImages(searchInput.value.trim(), page, perPage)
         .then(createMarkup)
         .catch(() => {
@@ -111,10 +115,6 @@ function onLoad(entries, observer) {
         top: cardHeight * 2,
         behavior: "smooth",
       });
-
-            if (page >= Math.ceil(totalHits / perPage)) {
-        observer.unobserve(target);
-      };
     };
   });
 };
